@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: TestSuite
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 6.750 s <<< FAILURE! -- in TestSuite
-com.example.PlaywrightTest.testPageTitle -- Time elapsed: 0.651 s <<< FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 20.81 s <<< FAILURE! -- in TestSuite
+com.example.PlaywrightTest.testPageTitle -- Time elapsed: 2.965 s <<< FAILURE!
 java.lang.AssertionError: expected [Example Domain1] but found [Example Domain]
 	at org.testng.Assert.fail(Assert.java:111)
 	at org.testng.Assert.failNotEquals(Assert.java:1578)
