@@ -1,0 +1,50 @@
+name: Selenium Maven Test Suite
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+# Forces all command line operations to execute inside your project folder
+defaults:
+  run:
+    working-directory: newrepo/demo
+
+jobs:
+  regression-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Pull the codebase into the virtual environment
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      # 2. Configure Java and map the caching system to your nested pom.xml
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+          cache-dependency-path: 'newrepo/demo/pom.xml'
+
+      # 3. Print the pre-installed Chrome version on the runner for validation
+      - name: Check Chrome Browser Version
+        run: google-chrome --version
+
+      # 4. Trigger test execution using the Maven compiler
+      - name: Run Selenium Tests
+        run: mvn clean test
+
+      # 5. Extract and preserve the output reports even if tests fail
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: selenium-test-reports
+          path: |
+            newrepo/demo/target/surefire-reports/
+            newrepo/demo/target/site/
+          retention-days: 7
