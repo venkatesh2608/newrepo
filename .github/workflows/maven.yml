@@ -28,7 +28,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'maven'
-          cache-dependency-path: 'newrepo/demo/pom.xml'
+          cache-dependency-path: 'demo/pom.xml'
 
       # 3. Print the pre-installed Chrome version on the runner for validation
       - name: Check Chrome Browser Version
