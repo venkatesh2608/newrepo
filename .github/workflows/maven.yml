@@ -30,13 +30,9 @@ jobs:
           cache: 'maven'
           cache-dependency-path: 'demo/pom.xml'
 
-      # 3. Print the pre-installed Chrome version on the runner for validation
-      - name: Check Chrome Browser Version
-        run: google-chrome --version
-
       # 4. Trigger test execution using the Maven compiler
       - name: Run Selenium Tests
-        run: mvn clean test
+        run: mvn clean install
 
       # 5. Extract and preserve the output reports even if tests fail
       - name: Upload Test Reports
