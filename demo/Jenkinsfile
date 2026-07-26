@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    tools {
+        // Enforce the pre-configured global build tools
+        maven 'maven-3.9.16'
+        jdk 'jdk_21'
+    }
+
+    stages {
+        stage('Checkout') {
+            setps {
+                git branch: 'main' url: 'https://github.com/venkatesh2608/newrepo.git'
+            }
+        }
+        stage('Buid') {
+            steps {
+                bat 'mvn clean install'
+            }
+        }
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+        stage('Reports') {
+            setps {
+                publishHTML(target: [
+                    reportDir: 'target/surefire-reports/Playwright Suite'
+                ])
+            }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: '**/target/surefire-reports/Playwright Suite/Headless Browser Automation.html'
+            
+        }
+    }
+}
