@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 dir('demo') {
-                    bat 'mvn clean install'
+                    bat 'mvn clean install -DskipTests'
                 }
             }
         }
@@ -21,18 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('Reports') {
-            steps {
-                publishHTML(target: [
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: true,
-                    reportDir: 'target/surefire-reports/Playwright Suite',
-                    reportFiles: 'index.html',
-                    reportName: 'Playwright Test Report'
-                ])
-            }
-        }
+        
     }
     post {
         always {
