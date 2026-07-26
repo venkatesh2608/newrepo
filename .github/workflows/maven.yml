@@ -2,15 +2,15 @@ name: Selenium Maven Test Suite
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "develop" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
 
-# Sets the terminal context directory for custom bash execution steps
+# Correct path: Context is inside the repository root
 defaults:
   run:
-    working-directory: newrepo/demo
+    working-directory: demo
 
 jobs:
   regression-tests:
@@ -28,14 +28,14 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'maven'
-          # CRITICAL FIX: Directs the caching tool directly to your sub-folder's pom.xml
-          cache-dependency-path: 'newrepo/demo/pom.xml'
+          # Fixed path relative to repository workspace root
+          cache-dependency-path: 'demo/pom.xml'
 
       # 3. Verify local pre-installed Google Chrome version
       - name: Check Chrome Browser Version
         run: google-chrome --version
 
-      # 4. Trigger test execution natively inside newrepo/demo/
+      # 4. Trigger test execution natively inside the demo/ folder
       - name: Run Selenium Tests
         run: mvn clean test
 
@@ -46,6 +46,6 @@ jobs:
         with:
           name: selenium-test-reports
           path: |
-            newrepo/demo/target/surefire-reports/
-            newrepo/demo/target/site/
+            demo/target/surefire-reports/
+            demo/target/site/
           retention-days: 7
