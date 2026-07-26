@@ -36,7 +36,7 @@ public class PlaywrightTest {
         System.out.println("#####Running Headless Test. Page Title: " + title+"#####");
 
         // TestNG Verification
-        Assert.assertEquals(title, "Example Domain");
+        Assert.assertEquals(title, "Example Domain 1");
     }
 
     @AfterClass
