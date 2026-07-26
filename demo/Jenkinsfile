@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        // Enforce the pre-configured global build tools
-        maven 'maven-3.9.16'
-        jdk 'jdk_21'
-    }
-
     stages {
         stage('Checkout') {
             steps {
