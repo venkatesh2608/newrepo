@@ -2,15 +2,12 @@ name: Selenium Maven Test Suite
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
 
-# Forces all command line operations to execute inside your project folder
-defaults:
-  run:
-    working-directory: newrepo
+
 
 jobs:
   regression-tests:
