@@ -33,7 +33,7 @@ public class PlaywrightTest {
 
         // Fetch page details
         String title = page.title();
-        System.out.println("#####Running Headless Test. Page Title: " + title+"#####");
+        System.out.println("#####Running Headless Test. Page Title is: " + title+"#####");
 
         // TestNG Verification
         Assert.assertEquals(title, "Example Domain");
