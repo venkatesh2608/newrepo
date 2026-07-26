@@ -29,7 +29,7 @@ public class PlaywrightTest {
     @Test
     public void testPageTitle() {
         // Navigate to target site
-        page.navigate("https://example.com");
+        page.navigate("https://example.com/");
 
         // Fetch page details
         String title = page.title();
