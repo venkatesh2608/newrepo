@@ -10,7 +10,7 @@ on:
 # Forces all command line operations to execute inside your project folder
 defaults:
   run:
-    working-directory: newrepo/demo
+    working-directory: newrepo
 
 jobs:
   regression-tests:
