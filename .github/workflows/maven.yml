@@ -28,7 +28,7 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'maven'
-          cache-dependency-path: 'demo/pom.xml'
+          cache-dependency-path: 'pom.xml'
 
       # 4. Trigger test execution using the Maven compiler
       - name: Run Selenium Tests
